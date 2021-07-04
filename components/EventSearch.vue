@@ -6,11 +6,11 @@
         <category-pill categoryLable="Any"/>
     </nuxt-link>
     <nuxt-link 
-        v-for="category in placeholderCategories" 
-        :key="category" 
-        :to="{query: {category: category}}"
+        v-for="category in categories" 
+        :key="category.id" 
+        :to="{query: {category: category.id}}"
     >
-        <category-pill :categoryLable="category"/>
+        <category-pill :categoryLable="category.title"/>
     </nuxt-link>
   </div>
 </template>
@@ -21,10 +21,11 @@ export default {
   components: { CategoryPill },
     data: function(){
         return {
-            placeholderCategories: [
-                "badminton", "volleyball", "asdasd", "tgagtfasfa", "tzwztetsfdsf"
-            ]
+            categories: null
         }
+    },
+    async fetch(){
+        this.categories=await this.$nuxt.context.$http.$get('http://localhost:1337/categories');
     }
 }
 </script>

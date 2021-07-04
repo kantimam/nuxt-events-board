@@ -26,9 +26,13 @@
             }
         },
         async fetch(){
-            this.events=await this.$nuxt.context.$http.$get('http://localhost:1337/events');
-            console.log(this.events)
-            //this.events=await fetch(`http://localhost:1337/events`).then(res=>res.json());
+            const query=this.$nuxt.context.query;
+            const search=new URLSearchParams(query);
+            const searchString=search.toString();
+            const conditionalSearchString=searchString? `?${searchString}` : ''
+            
+            this.events=await this.$nuxt.context.$http.$get(`http://localhost:1337/events${conditionalSearchString}`);
+            
         }
     }
 </script>
