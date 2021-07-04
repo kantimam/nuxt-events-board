@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto py-10">
+  <div>
       <h1>hello</h1>
       <div class="py-8 grid-auto-fill-columns gap-4">
           <event-item v-for="event in events" v-bind:key="event.id" :event="event"/>

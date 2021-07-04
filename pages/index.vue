@@ -1,13 +1,30 @@
 <template>
-  <EventFeed :events="events"/>
+  <div class="container mx-auto">
+    <event-overview/>
+  </div>
 </template>
 
 
 <script>
+import EventOverview from '../components/EventOverview.vue'
 export default {
-  async asyncData({ $http }) {
-    const events=await $http.$get('http://localhost:1337/events');
-    return  {events};
+  components: { EventOverview },
+  /* data(){
+    return {
+      events: []
+    }
   },
+  watch: {
+    '$route.query': '$fetch'
+  },
+  activated() {
+    // Call fetch again if last fetch more than 30 sec ago
+    if (this.$fetchState.timestamp <= Date.now() - 30000) {
+      this.$fetch()
+    }
+  },
+  async fetch(){
+    this.events=await this.$nuxt.context.$http.$get('http://localhost:1337/events');
+  } */
 }
 </script>
