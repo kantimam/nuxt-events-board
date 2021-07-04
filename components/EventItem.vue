@@ -1,6 +1,11 @@
 <template>
   <article class="bg-white shadow-lg rounded-lg p-4">
-      <h1>{{event.title}}</h1>
+    <NuxtLink :to="{name: 'events-id', params: {id: event.id}}">
+      <h1 class="text-xl font-bold two-line-min-h">{{event.title}}</h1>
+    </NuxtLink>
+    <p class="pt-6">
+      {{event.description.substring(0, 200)}}
+    </p>
   </article>
 </template>
 
@@ -10,6 +15,8 @@ export default {
 }
 </script>
 
-<style>
-    
+<style scoped>
+    .two-line-min-h{
+      min-height: 66px;
+    }
 </style>
