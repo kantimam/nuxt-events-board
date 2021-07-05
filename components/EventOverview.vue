@@ -19,12 +19,12 @@
         watch: {
             '$route.query': '$fetch'
         },
-        activated() {
+        /* activated() {
             // Call fetch again if last fetch more than 30 sec ago
             if (this.$fetchState.timestamp <= Date.now() - 30000) {
                 this.$fetch()
             }
-        },
+        }, */
         async fetch(){
             const query=this.$nuxt.context.query;
             const search=new URLSearchParams(query);

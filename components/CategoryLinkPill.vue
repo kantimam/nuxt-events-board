@@ -1,7 +1,7 @@
 <template>
     <nuxt-link 
         :to="to"
-        class="bg-green-400 py-1 px-3 rounded-full ring-2 ring-black"
+        class="bg-purple-400 py-1 px-3 rounded-full ring-2 ring-black"
     >
         {{title}}
     </nuxt-link>

@@ -1,13 +1,13 @@
 <template>
     <div class="py-4 flex flex-wrap gap-4">
         <category-link-pill 
-            :to="{query: {}}"
+            :to="{query: updateQuery($route.query, 'category', '')}"
             title="Any"
         />
         <category-link-pill 
             v-for="category in categories" 
             :key="category.id"
-            :to="{query: {category: category.id}}"
+            :to="{query: updateQuery($route.query, 'category', category.id)}"
             :title="category.title"
         />
         </div>
@@ -30,6 +30,15 @@ export default {
     },
     async fetch(){
         this.categories=await this.$nuxt.context.$http.$get('http://localhost:1337/categories');
+    },
+    methods: {
+        updateQuery: function(queryObject, key, val){
+            /* TODO: make this reusable or find a better way */
+            const currentQuery={...queryObject};
+            if(val==='' || val===null || val===undefined) delete currentQuery[key];
+            else currentQuery[key]=val;
+            return currentQuery;    
+        }
     }
 }
 </script>
