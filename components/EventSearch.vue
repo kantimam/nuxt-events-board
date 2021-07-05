@@ -1,32 +1,15 @@
 <template>
-  <div class="py-4 flex flex-wrap gap-4">
-    <nuxt-link 
-        :to="{query: {}}"
-    >
-        <category-pill categoryLable="Any"/>
-    </nuxt-link>
-    <nuxt-link 
-        v-for="category in categories" 
-        :key="category.id" 
-        :to="{query: {category: category.id}}"
-    >
-        <category-pill :categoryLable="category.title"/>
-    </nuxt-link>
-  </div>
+    <div class="py-4">
+        <event-searchbar/>
+        <event-category-filter/>
+    </div>
 </template>
 
 <script>
-import CategoryPill from './CategoryPill.vue'
+import EventCategoryFilter from './EventCategoryFilter.vue'
+import EventSearchbar from './EventSearchbar.vue'
 export default {
-  components: { CategoryPill },
-    data: function(){
-        return {
-            categories: null
-        }
-    },
-    async fetch(){
-        this.categories=await this.$nuxt.context.$http.$get('http://localhost:1337/categories');
-    }
+  components: {  EventCategoryFilter, EventSearchbar }
 }
 </script>
 

@@ -1,8 +1,8 @@
 <template>
   <div class="py-10">
+    <event-grid :events="events"/> 
     <p v-if="$fetchState.pending">Fetching events...</p>
     <p v-else-if="$fetchState.error">An error occurred :(</p>
-    <event-grid v-else :events="events"/> 
   </div>
 </template>
 
@@ -30,7 +30,7 @@
             const search=new URLSearchParams(query);
             const searchString=search.toString();
             const conditionalSearchString=searchString? `?${searchString}` : ''
-            
+
             this.events=await this.$nuxt.context.$http.$get(`http://localhost:1337/events${conditionalSearchString}`);
             
         }
