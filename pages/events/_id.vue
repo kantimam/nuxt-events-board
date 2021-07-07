@@ -8,8 +8,9 @@
 import EventItem from '../../components/EventItem.vue';
 export default {
   components: { EventItem },
-    async asyncData({params, $http}) {
-        const event=await $http.$get(`http://localhost:1337/events/${params.id}`);
+    async asyncData({params, $http, env}) {
+        console.log(env)
+        const event=await $http.$get(`${env.baseUrl}/events/${params.id}`, );
         return  {event};
     },
 }

@@ -36,6 +36,10 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:1337'
+  }
+
   /* image: {
     providers: {
       strapi: { provider: 'http://localhost:1337' },

@@ -29,13 +29,13 @@ export default {
         }
     },
     async fetch(){
-        this.categories=await this.$nuxt.context.$http.$get('http://localhost:1337/categories');
+        this.categories=await this.$nuxt.context.$http.$get(`${this.$nuxt.context.env.baseUrl}/categories`);
     },
     methods: {
-        updateQuery: function(queryObject, key, val){
+        updateQuery: function(queryObject, key, val=''){
             /* TODO: make this reusable or find a better way */
             const currentQuery={...queryObject};
-            if(val==='' || val===null || val===undefined) delete currentQuery[key];
+            if(val==='') delete currentQuery[key];
             else currentQuery[key]=val;
             return currentQuery;    
         }

@@ -24,11 +24,12 @@
         data: function(){
             return {
                 functionDelay: null,
-                inputValue: ''
+                inputValue: this.$route.query._q || ''
             }
         },
         watch: {
             inputValue: function(newValue/* , oldValue */){
+                /* update query params with the new input value after a short debounce delay */
                 if(this.functionDelay) clearTimeout(this.functionDelay);
                 this.functionDelay=setTimeout(()=>{
                     //console.log("query updated");

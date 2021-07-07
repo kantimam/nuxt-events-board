@@ -13,7 +13,8 @@
     "@nuxt/http": "^0.6.4",
     "@nuxt/image": "^0.5.0",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "nuxt-auth": "^2.0.10"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^4.2.0",

@@ -30,9 +30,7 @@
             const search=new URLSearchParams(query);
             const searchString=search.toString();
             const conditionalSearchString=searchString? `?${searchString}` : ''
-
-            this.events=await this.$nuxt.context.$http.$get(`http://localhost:1337/events${conditionalSearchString}`);
-            
+            this.events=await this.$nuxt.context.$http.$get(`${this.$nuxt.context.env.baseUrl}/events${conditionalSearchString}`);
         }
     }
 </script>
